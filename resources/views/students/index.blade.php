@@ -6,6 +6,11 @@
                 View all Students
             </h1>
         </div>
+        <div class="col text-end">
+            <a href="{{ route('students.create') }}" class="btn btn-primary"> +Add Student
+
+            </a>
+        </div>
     </div>
     <div class="row">
         @foreach($students as $student)
