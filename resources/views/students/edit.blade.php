@@ -8,7 +8,8 @@
         </div>
     </div>
     <div class="row">
-        <form action="{{ route('students.update', $student -> id) }}" method="PUT">
+        <form action="{{ route('students.update', $student -> id) }}" method="post">
+            @method('PUT')
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>

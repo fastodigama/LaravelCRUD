@@ -66,6 +66,8 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student)
     {
         $student->update($request->validated());
+        Session::flash('success', 'Student updated successfully.');
+        return redirect() -> route('students.index');
     }
 
     /**
