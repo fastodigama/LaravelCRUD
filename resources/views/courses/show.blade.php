@@ -14,7 +14,7 @@
         <div class="col-md-4  mb-3">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $course -> name }} </h5>
+                    <h5 class="card-title">{{ $course -> courseName }} </h5>
                     <hr/>
                     <p class=" mb-3 mt-2">{{ $course -> description }}</p>
                     <a href="{{ route('courses.edit', $course -> id ) }}" class="card-link">Edit</a>

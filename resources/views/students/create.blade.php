@@ -21,20 +21,47 @@
             {{ csrf_field() }}
             <div class="mb-3">
                 <label for="fname" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="fname" name="fname" aria-describedby="fname">
+
+                <!-- Adds Bootstrap's is-invalid class if there's a validation error.
+
+                Shows the error message inside a styled <span> using invalid-feedback. -->
+                <input type="text" class="form-control @error('fname') is-invalid @enderror" id="fname" name="fname" aria-describedby="fname" placeholder="First Name" value="{{old('fname')}}" >
+                @error('fname')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{$message}} </strong>
+                
+                </span>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="lname" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="lname" name="lname" aria-describedby="lname">
+                <input type="text" name="lname" class="form-control @error('lname') is-invalid @enderror" placeholder="Last Name" value="{{ old('lname') }}">
+                @error('lname')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="email">
+                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}">
                 @error('email')
                     <span class="text-danger" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+
+            </div>
+            <div class ="mb-3">
+                <label for="courseName" class="form-label">Course</label>
+                <select name="course" id="course" class="form-select">
+                    @foreach($courses as $course)
+                    <option value="{{$course->id}}">{{$course->courseName}}</option>
+                    @endforeach
+                </select>
+                    
+
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

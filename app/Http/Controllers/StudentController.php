@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Course;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 
@@ -28,7 +29,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view("students.create");
+        $courses = Course::all(); // Fetch all courses from the database
+        return view("students.create", compact("courses")); // Pass it to the view
     }
 
     /**

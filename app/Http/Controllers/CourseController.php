@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
+
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use App\Models\Course;
+use App\Models\Student;
+
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -47,11 +50,13 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Course $course)
+    public function show(Course $course,$id)
     {
         //show single course details
         /* compact('course') is a PHP function that creates an associative array where the key is the variable name (as a string) and the value is the variable's current value. */
-        return view('courses.show', compact('course'));
+        $course=Course::find($id);
+        $student=$course->students;
+        return view('courses.show', ['course'=>$course, 'students'=>$student]);
     }
 
     /**
