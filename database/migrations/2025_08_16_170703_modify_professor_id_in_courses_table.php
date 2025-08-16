@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('courses', function (Blueprint $table) {
             //
+                    $table->foreignId('professor_id')->nullable()->constrained()->onDelete('cascade')->change();
+
         });
     }
 
@@ -23,6 +25,8 @@ return new class extends Migration
     {
         Schema::table('courses', function (Blueprint $table) {
             //
+                    $table->foreignId('professor_id')->nullable(false)->change();
+
         });
     }
 };
